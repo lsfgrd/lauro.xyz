@@ -3,6 +3,8 @@ import Layout from "../../layouts/Base.astro";
 import Container from "../../components/Container.astro";
 import TagList from "../../components/TagList.astro";
 import Navbar from "../../components/Navbar.astro";
+import Page from "../../layouts/Page.astro";
+import Footer from "../../components/Footer.astro";
 
 const seo = {
   title: "Lauro | CV",
@@ -15,8 +17,7 @@ const experience = [
     role: "Software Engineer",
     period: "March/2021 -- Current",
     location: "Belo Horizonte, Brazil (Remote)",
-    desc:
-      `<p>As a Software Engineer consultant, I provide web development services to a rapidly growing retail client in the U.S. My contributions include:</p>
+    desc: `<p>As a Software Engineer consultant, I provide web development services to a rapidly growing retail client in the U.S. My contributions include:</p>
 
 <ul>
   <li>Frontend and backend development;</li>
@@ -27,7 +28,8 @@ const experience = [
   <li>Working with Google Cloud Platform for effective application deployment and monitoring;</li>
   <li>Specializing in CMS integrations for streamlined content management.</li>
 </ul>
-`},
+`,
+  },
   {
     company: "Raro Labs (Banco BMG)",
     role: "Full Stack Engineer",
@@ -61,7 +63,7 @@ const experience = [
 ];
 ---
 
-<Layout seo={seo}>
+<Page seo={seo}>
   <Container>
     <h1>Lauro Figueiredo</h1>
 
@@ -133,8 +135,22 @@ const experience = [
         </header>
       </article>
     </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>laurofgrd(at)gmail.com</p>
+      <p>hire(at)lauro.xyz</p>
+
+      <p>
+        <a href="https://www.linkedin.com/in/laurofgrd/" target="_blank"
+          >https://www.linkedin.com/in/laurofgrd/</a
+        >
+      </p>
+    </section>
+
+    <Footer />
   </Container>
-</Layout>
+</Page>
 
 <style>
   .experience--item {

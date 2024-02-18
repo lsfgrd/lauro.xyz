@@ -46,22 +46,27 @@
       <a href="#about" class="navbar__link">About</a>
     </li>
     <li class="navbar__item">
-      <a href="#experience" class="navbar__link">Experience</a>
-    </li>
-    <li class="navbar__item">
       <a href="#technologies" class="navbar__link">Technologies</a>
     </li>
     <li class="navbar__item">
+      <a href="#experience" class="navbar__link">Experience</a>
+    </li>
+    <li class="navbar__item">
       <a href="#education" class="navbar__link">Education</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#contact" class="navbar__link">Contact</a>
     </li>
   </ul>
 </nav>
 
 <style>
   .navbar {
-    background: #333;
-    color: #fff;
+    background: #FFF;
+    color: #000;
     padding: 10px 20px;
+    position: sticky;
+    top: 0;
   }
 
   .navbar__menu {
@@ -77,16 +82,17 @@
   }
 
   .navbar__link {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     padding: 5px 10px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     transition: background-color 0.3s;
   }
 
   .navbar__link:hover {
-    background-color: #555;
+    /* background-color: #555; */
     outline: none;
+    border-bottom: 3px solid black;
   }
 
   .navbar__hamburger {

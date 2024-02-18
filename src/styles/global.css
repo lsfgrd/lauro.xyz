@@ -11,9 +11,16 @@ body {
   scroll-behavior: smooth;
 }
 
+a:focus {
+  outline: auto 5px Highlight; /* for non-webkit browsers */
+  outline: auto 5px -webkit-focus-ring-color; /* for webkit browsers */
+}
+
 section {
   transition: background-color 0.3s ease, border 0.3s ease, padding 0.3s ease;
   border: 2px solid transparent;
+  scroll-margin-top: 50px;
+  padding: 5px;
   /* Add any other properties you're changing in .section--active */
 }
 

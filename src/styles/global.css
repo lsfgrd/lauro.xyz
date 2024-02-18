@@ -8,4 +8,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+section {
+  transition: background-color 0.3s ease, border 0.3s ease, padding 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.section--active {
+  border: 2px solid #555;
+  background-color: rgba(85, 85, 85, 0.1);
 }

@@ -1,0 +1,50 @@
+---
+const tags = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'NextJS',
+  'Nest',
+  'Node',
+  'Angular',
+  'C#',
+  '.NET Core',
+  'Java',
+  'Spring Boot',
+  'PostgreSQL',
+  'MongoDB',
+  'SQL Server',
+  'Adobe Experience Manager',
+];
+---
+
+<section id="technologies" class="technologies-section">
+  <h2>Technologies I've Worked With</h2>
+  <ul class="tech-list">
+    {tags.map(tag => <li class="tech-item">{tag}</li>)}
+  </ul>
+</section>
+
+<style>
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.tech-item {
+  margin: 5px;
+  padding: 5px 15px;
+  background: #007bff;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.tech-item:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+</style>

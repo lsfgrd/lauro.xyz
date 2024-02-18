@@ -1,0 +1,50 @@
+---
+const tags = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'NextJS',
+  'Nest',
+  'Node',
+  'Angular',
+  'C#',
+  '.NET Core',
+  'Java',
+  'Spring Boot',
+  'PostgreSQL',
+  'MongoDB',
+  'SQL Server',
+  'Adobe Experience Manager',
+];
+---
+
+<section id="technologies" class="technologies-section">
+  <h2>Technologies I've Worked With</h2>
+  <ul class="tech-list">
+    {tags.map(tag => <li class="tech-item">{tag}</li>)}
+  </ul>
+</section>
+
+<style>
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.tech-item {
+  margin: 5px;
+  padding: 5px 15px; /* Reduced padding for a more badge-like appearance */
+  background: #007bff; /* Use a more vibrant color for badges */
+  color: #ffffff; /* White text color for contrast */
+  border-radius: 20px; /* Increased border-radius for rounded edges */
+  font-size: 0.9rem; /* Slightly smaller font size for badge content */
+  transition: background-color 0.2s; /* Smooth background color transition */
+}
+
+.tech-item:hover {
+  background-color: #0056b3; /* Darker shade on hover for interaction feedback */
+  cursor: pointer; /* Change cursor to pointer to indicate clickable */
+}
+</style>

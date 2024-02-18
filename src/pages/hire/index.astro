@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Base.astro";
 import Container from "../../components/Container.astro";
+import TagList from "../../components/TagList.astro";
+import Navbar from "../../components/Navbar.astro";
 
 const seo = {
   title: "Lauro | CV",
@@ -13,15 +15,48 @@ const experience = [
     role: "Software Engineer",
     period: "March/2021 -- Current",
     location: "Belo Horizonte, Brazil (Remote)",
-    desc: [
-      `Currently working for an American retailer, focusing on enhancing the company's
-      client-facing websites (home page, PLPs and PDPs).
-      Through this role, I've developed extensive expertise in Accessibility, SEO,
-      and performance optimization.`,
-      `My primary technology stack revolves around React/Next.js, Scala, and Java, although
-      I've also expanded my skills in many different areas. Notably, I led a squad to successfully
-      deliver the migration from the legacy CMS solution to Adobe Experience Manager.`,
-    ],
+    desc:
+      `<p>As a Software Engineer consultant, I provide web development services to a rapidly growing retail client in the U.S. My contributions include:</p>
+
+<ul>
+  <li>Frontend and backend development;</li>
+  <li>Enhancing website accessibility, performance, and SEO;</li>
+  <li>Code quality assurance through rigorous unit testing;</li>
+  <li>Implementing and managing Google Analytics tracking to gather insightful user data and drive website optimization;</li>
+  <li>General system performance and monitoring;</li>
+  <li>Working with Google Cloud Platform for effective application deployment and monitoring;</li>
+  <li>Specializing in CMS integrations for streamlined content management.</li>
+</ul>
+`},
+  {
+    company: "Raro Labs (Banco BMG)",
+    role: "Full Stack Engineer",
+    period: "May/2019 -- March/2021",
+    location: "Belo Horizonte, Brazil",
+    desc: `<p>Working as a Full Stack Web Developer at Banco BMG (a banking company from Brazil), I was involved in the development of both internal and external systems. My contributions were centered around:</p>
+<ul>
+  <li>Development using Angular (versions 8 and 10), .NET Core (versions 2.1 and 3.1);</li>
+  <li>Working with SQL Server and Oracle databases, utilizing ORM frameworks like Dapper and EF Core for data access;</li>
+  <li>Implementing unit testing using Karma/Jasmine and XUnit.</li>
+</ul>
+
+<p>My responsibilities included:</p>
+<ul>
+  <li>Enhancing existing system features;</li>
+  <li>Facilitating system integrations;</li>
+  <li>Maintaining systems in production;</li>
+  <li>Technical design of new products;</li>
+  <li>Managing builds and releases on Azure Pipelines;</li>
+  <li>Technical documentation of APIs.</li>
+</ul>
+`,
+  },
+  {
+    company: "Vamos Parcelar",
+    role: "Full Stack Developer",
+    period: "March/2018 -- May/2019",
+    location: "Belo Horizonte, Brazil",
+    desc: [],
   },
 ];
 ---
@@ -29,6 +64,30 @@ const experience = [
 <Layout seo={seo}>
   <Container>
     <h1>Lauro Figueiredo</h1>
+
+    <Navbar />
+
+    <section id="about">
+      <p>
+        I'm a Web Developer with a strong focus on JavaScript and its wide range
+        of uses, both in front-end and back-end development. I believe in
+        keeping up with the basics of JavaScript, which helps me quickly adapt
+        to new technologies as they come.
+      </p>
+
+      <p>
+        Accessibility is a key priority in my work. I aim to create web
+        experiences that are accessible to all, underlining the importance of
+        inclusive design.
+      </p>
+
+      <p>
+        My main goal is always to provide the best user experience, emphasizing
+        code quality and continuous improvement.
+      </p>
+    </section>
+
+    <TagList />
 
     <section id="experience">
       <h2>Experience</h2>
@@ -43,21 +102,42 @@ const experience = [
                 <time>{period}</time>
                 <p>{location}</p>
               </header>
-              <ul>
-                {desc.map((d) => (
-                  <li>{d}</li>
-                ))}
-              </ul>
+              <p set:html={desc} />
             </article>
           );
         })
       }
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <article class="experience--item">
+        <header>
+          <h3>PUC Minas</h3>
+          <time>2024 -- Current</time>
+          <p>Postgraduate Diploma in Distributed Software Architecture</p>
+        </header>
+      </article>
+      <article class="experience--item">
+        <header>
+          <h3>Federal University of Minas Gerais</h3>
+          <time>2016 -- 2023</time>
+          <p>BSc. in Social Anthropology and Archaeology</p>
+        </header>
+      </article>
+      <article class="experience--item">
+        <header>
+          <h3>freeCodeCamp</h3>
+          <time>2017 -- 2018</time>
+          <p>Computer Software Engineering Certificate</p>
+        </header>
+      </article>
     </section>
   </Container>
 </Layout>
 
 <style>
   .experience--item {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 </style>

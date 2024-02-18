@@ -1,0 +1,113 @@
+---
+
+---
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".navbar__link");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const id = link.getAttribute("href")?.substring(1); // Remove '#' from href to get the ID
+        const section = document.querySelector(`section[id="${id}"]`);
+
+        if (section) {
+          // Remove active class from all sections
+          document.querySelectorAll("section[id]").forEach((sec) => {
+            sec.classList.remove("section--active");
+          });
+
+          // Add active class to clicked section
+          section.classList.add("section--active");
+
+          // Remove the class after a few seconds (e.g., 3 seconds)
+          setTimeout(() => {
+            section.classList.remove("section--active");
+          }, 1000); // Adjust time as needed
+        }
+      });
+    });
+  });
+</script>
+
+<nav class="navbar">
+  <input
+    type="checkbox"
+    id="menuToggle"
+    class="navbar__toggle"
+    aria-hidden="true"
+    hidden
+  />
+  <label for="menuToggle" class="navbar__hamburger" aria-label="Toggle menu">
+    ☰ Skip to
+  </label>
+  <ul class="navbar__menu">
+    <li class="navbar__item">
+      <a href="#about" class="navbar__link">About</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#experience" class="navbar__link">Experience</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#technologies" class="navbar__link">Technologies</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#education" class="navbar__link">Education</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .navbar {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+
+  .navbar__menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar__item {
+    margin: 0 15px;
+  }
+
+  .navbar__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .navbar__link:hover {
+    background-color: #555;
+    outline: none;
+  }
+
+  .navbar__hamburger {
+    display: none;
+    cursor: pointer;
+  }
+
+  .navbar__toggle {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .navbar__menu {
+      display: none;
+    }
+    .navbar__hamburger {
+      display: block;
+    }
+
+    .navbar__toggle:checked + .navbar__hamburger + .navbar__menu {
+      display: block;
+    }
+  }
+</style>

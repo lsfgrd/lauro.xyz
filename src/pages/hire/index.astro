@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Base.astro";
+import Container from "../../components/Container.astro";
+
+const seo = {
+  title: "Lauro | CV",
+  description: "Dog dad. Web developer. RPG enthusiast.",
+};
+
+const experience = [
+  {
+    company: "Avenue Code",
+    role: "Software Engineer",
+    period: "March/2021 -- Current",
+    location: "Belo Horizonte, Brazil (Remote)",
+    desc: [
+      `Currently working for an American retailer, focusing on enhancing the company's
+      client-facing websites (home page, PLPs and PDPs).
+      Through this role, I've developed extensive expertise in Accessibility, SEO,
+      and performance optimization.`,
+      `My primary technology stack revolves around React/Next.js, Scala, and Java, although
+      I've also expanded my skills in many different areas. Notably, I led a squad to successfully
+      deliver the migration from the legacy CMS solution to Adobe Experience Manager.`,
+    ],
+  },
+];
+---
+
+<Layout seo={seo}>
+  <Container>
+    <h1>Lauro Figueiredo</h1>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      {
+        experience.map(({ company, role, period, desc, location }) => {
+          return (
+            <article class="experience--item">
+              <header>
+                <h3>
+                  {role} at {company}
+                </h3>
+                <time>{period}</time>
+                <p>{location}</p>
+              </header>
+              <ul>
+                {desc.map((d) => (
+                  <li>{d}</li>
+                ))}
+              </ul>
+            </article>
+          );
+        })
+      }
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .experience--item {
+    border: 1px solid red;
+  }
+</style>

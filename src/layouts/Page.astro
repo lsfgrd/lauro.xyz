@@ -1,15 +1,19 @@
 ---
-import Layout from './Base.astro';
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
-import BackToTop from '../components/BackToTop.astro';
+import Layout from "./Base.astro";
+import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Container from "../components/Container.astro";
 
 export interface Props {
-	seo?: BaseHeadProps;
+  seo?: BaseHeadProps;
 }
 
 const { seo } = Astro.props as Props;
 ---
 
 <Layout seo={seo}>
-		<slot />
+  <Container>
+    <Header />
+    <slot />
+  </Container>
 </Layout>

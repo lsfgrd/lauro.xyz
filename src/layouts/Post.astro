@@ -3,6 +3,7 @@ import Layout from "./Base.astro";
 import Container from "../components/Container.astro";
 import ArticleSchema from "../components/ArticleSchema.astro";
 import Page from "./Page.astro";
+import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 ---
@@ -14,19 +15,35 @@ const { frontmatter } = Astro.props;
   <article class="post-content__article">
     <h1>{frontmatter.title}</h1>
     <time>{frontmatter.publishDate}</time>
-    <br>
+    <br />
     {
       frontmatter.image && (
-        <img
-          width="720"
-          height="420"
-          class="post-main__img"
-          loading="lazy"
+        // <img
+        //   width="720"
+        //   height="420"
+        //   class="post-main__img"
+        //   loading="lazy"
+        //   src={frontmatter.image}
+        //   alt={frontmatter.alt}
+        // />
+        <Image
           src={frontmatter.image}
           alt={frontmatter.alt}
+          // // width={720}
+          // // height={420}
+          // widths={[300, 600, 900, 1200, 1800, 2400]}
+          loading="eager"
+          class="post-main__img"
         />
       )
     }
     <slot />
   </article>
 </Page>
+
+<style>
+  img {
+    width: 100%;
+    height: auto;
+  }
+</style>

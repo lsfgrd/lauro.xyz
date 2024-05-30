@@ -1,0 +1,65 @@
+---
+import LightDarkToggle from "./LightDarkToggle.astro";
+
+const menu = [
+  {
+    title: "about",
+    url: "/about",
+  },
+  {
+    title: "defaults",
+    url: "/defaults",
+  },
+  {
+    title: "hire",
+    url: "/hire",
+  },
+  {
+    title: "tech blog",
+    url: "/tech",
+  },
+];
+---
+
+<header>
+  <h1><a href="/">lauro figueiredo</a></h1>
+
+  <nav>
+    <ul>
+      {
+        menu.map(({ url, title }, index) => (
+          <li>
+            <a href={url}>{title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <LightDarkToggle />
+</header>
+
+<style>
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0;
+  }
+
+  nav ul li {
+    list-style: none;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+  }
+</style>

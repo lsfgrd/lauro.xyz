@@ -3,6 +3,7 @@ import Layout from "../../layouts/Base.astro";
 import Container from "../../components/Container.astro";
 import BlogPostPreview from "../../components/BlogPostPreview.astro";
 import Paginator from "../../components/Paginator.astro";
+import Page from "../../layouts/Page.astro";
 
 export async function getStaticPaths({ paginate }) {
   const posts = await Astro.glob("./*.md").then(
@@ -13,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
         description: frontmatter.description,
         publishDate: frontmatter.publishDate,
         image: frontmatter.image,
-      }))
+      })),
     // .sort((a, b) => {
     // 	new Date(b.publishDate) - new Date(a.publishDate)
     // })
@@ -34,16 +35,14 @@ const seo = {
 const { page } = Astro.props;
 ---
 
-<Layout seo={seo}>
-  <Container>
-    <article class="blog-page-content__article">
-      <section class="postlist">
-        {page.data.map((post) => <BlogPostPreview post={post} />)}
-      </section>
-    </article>
-    <Paginator page={page} />
-  </Container>
-</Layout>
+<Page seo={seo}>
+  <article class="blog-page-content__article">
+    <section class="postlist">
+      {page.data.map((post) => <BlogPostPreview post={post} />)}
+    </section>
+  </article>
+  <Paginator page={page} />
+</Page>
 
 <style>
   /* Posts list */

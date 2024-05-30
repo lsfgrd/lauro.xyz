@@ -64,92 +64,90 @@ const experience = [
 ---
 
 <Page seo={seo}>
-  <Container>
-    <h1>Lauro Figueiredo</h1>
+  <h1>Lauro Figueiredo</h1>
 
-    <Navbar />
+  <Navbar />
 
-    <section id="about">
-      <p>
-        I'm a Web Developer with a strong focus on JavaScript and its wide range
-        of uses, both in front-end and back-end development. I believe in
-        keeping up with the basics of JavaScript, which helps me quickly adapt
-        to new technologies as they come.
-      </p>
+  <section id="about">
+    <p>
+      I'm a Web Developer with a strong focus on JavaScript and its wide range
+      of uses, both in front-end and back-end development. I believe in keeping
+      up with the basics of JavaScript, which helps me quickly adapt to new
+      technologies as they come.
+    </p>
 
-      <p>
-        Accessibility is a key priority in my work. I aim to create web
-        experiences that are accessible to all, underlining the importance of
-        inclusive design.
-      </p>
+    <p>
+      Accessibility is a key priority in my work. I aim to create web
+      experiences that are accessible to all, underlining the importance of
+      inclusive design.
+    </p>
 
-      <p>
-        My main goal is always to provide the best user experience, emphasizing
-        code quality and continuous improvement.
-      </p>
-    </section>
+    <p>
+      My main goal is always to provide the best user experience, emphasizing
+      code quality and continuous improvement.
+    </p>
+  </section>
 
-    <TagList />
+  <TagList />
 
-    <section id="experience">
-      <h2>Experience</h2>
-      {
-        experience.map(({ company, role, period, desc, location }) => {
-          return (
-            <article class="experience--item">
-              <header>
-                <h3>
-                  {role} at {company}
-                </h3>
-                <time>{period}</time>
-                <p>{location}</p>
-              </header>
-              <p set:html={desc} />
-            </article>
-          );
-        })
-      }
-    </section>
+  <section id="experience">
+    <h2>Experience</h2>
+    {
+      experience.map(({ company, role, period, desc, location }) => {
+        return (
+          <article class="experience--item">
+            <header>
+              <h3>
+                {role} at {company}
+              </h3>
+              <time>{period}</time>
+              <p>{location}</p>
+            </header>
+            <p set:html={desc} />
+          </article>
+        );
+      })
+    }
+  </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <article class="experience--item">
-        <header>
-          <h3>PUC Minas</h3>
-          <time>2024 -- Current</time>
-          <p>Postgraduate Diploma in Distributed Software Architecture</p>
-        </header>
-      </article>
-      <article class="experience--item">
-        <header>
-          <h3>Federal University of Minas Gerais</h3>
-          <time>2016 -- 2023</time>
-          <p>BSc. in Social Anthropology and Archaeology</p>
-        </header>
-      </article>
-      <article class="experience--item">
-        <header>
-          <h3>freeCodeCamp</h3>
-          <time>2017 -- 2018</time>
-          <p>Computer Software Engineering Certificate</p>
-        </header>
-      </article>
-    </section>
+  <section id="education">
+    <h2>Education</h2>
+    <article class="experience--item">
+      <header>
+        <h3>PUC Minas</h3>
+        <time>2024 -- Current</time>
+        <p>Postgraduate Diploma in Distributed Software Architecture</p>
+      </header>
+    </article>
+    <article class="experience--item">
+      <header>
+        <h3>Federal University of Minas Gerais</h3>
+        <time>2016 -- 2023</time>
+        <p>BSc. in Social Anthropology and Archaeology</p>
+      </header>
+    </article>
+    <article class="experience--item">
+      <header>
+        <h3>freeCodeCamp</h3>
+        <time>2017 -- 2018</time>
+        <p>Computer Software Engineering Certificate</p>
+      </header>
+    </article>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>laurofgrd(at)gmail.com</p>
-      <p>hire(at)lauro.xyz</p>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>laurofgrd(at)gmail.com</p>
+    <p>hire(at)lauro.xyz</p>
 
-      <p>
-        <a href="https://www.linkedin.com/in/laurofgrd/" target="_blank"
-          >https://www.linkedin.com/in/laurofgrd/</a
-        >
-      </p>
-    </section>
+    <p>
+      <a href="https://www.linkedin.com/in/laurofgrd/" target="_blank"
+        >https://www.linkedin.com/in/laurofgrd/</a
+      >
+    </p>
+  </section>
 
-    <Footer />
-  </Container>
+  <Footer />
 </Page>
 
 <style>

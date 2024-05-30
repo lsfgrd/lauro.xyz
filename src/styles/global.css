@@ -3,12 +3,44 @@
   --container-padding: 1rem;
 }
 
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+
+[data-theme="dark"] {
+  --bg-color: #1E1E1E;
+  --text-color: #ffffff;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1E1E1E;
+    --text-color: #ffffff;
+  }
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+button {
+  cursor: pointer;
 }
 
 a:focus {
@@ -27,4 +59,8 @@ section {
 .section--active {
   border: 2px solid #555; /* Example of highlighting, adjust as needed */
   background-color: rgba(85, 85, 85, 0.1); /* Light background highlight */
+}
+
+.hidden {
+  display: none;
 }

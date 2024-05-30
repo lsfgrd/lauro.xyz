@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Base.astro";
 import Container from "../components/Container.astro";
+import Page from "../layouts/Page.astro";
 
 const seo = {
   title: "Lauro Figueiredo",
@@ -8,14 +9,11 @@ const seo = {
 };
 ---
 
-<Layout seo={seo}>
-  <Container>
-    <h1>Lauro Figueiredo</h1>
-    <p>Welcome to my small space :)</p>
+<Page seo={seo}>
+  <p>Welcome to my small space :)</p>
 
-    <a href="/hire">CV</a>
-    <a href="/tech">Tech blog</a>
-    <a href="/me">Personal blog</a>
-    <a href="/dad">Dad blog?</a>
-  </Container>
-</Layout>
+  <!-- <a href="/hire">CV</a>
+  <a href="/tech">Tech blog</a>
+  <a href="/me">Personal blog</a>
+  <a href="/dad">Dad blog?</a> -->
+</Page>

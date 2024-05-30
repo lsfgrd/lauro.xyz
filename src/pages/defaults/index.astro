@@ -1,0 +1,31 @@
+---
+import Page from "../../layouts/Page.astro";
+import Container from "../../components/Container.astro";
+
+const seo = {
+    title: "Defaults | Lauro",
+    description: "",
+};
+---
+
+<Page seo={seo}>
+    <p>
+        Following the <a href="https://defaults.rknight.me/" target="_blank"
+            >trend of bloggers listing their default apps</a
+        >, which I found very fun, here are my favorites for each of the listed
+        tasks:
+    </p>
+    <ul>
+        <li><strong>✉️ Mail service:</strong> Gmail</li>
+        <li>
+            <strong>🌐 Web Browser:</strong> Floorp on Desktop / Firefox on Android
+        </li>
+        <li><strong>🧮 Code Editor:</strong> Visual Studio Code</li>
+        <li><strong>🔐 Password Management:</strong> Bitwarden</li>
+        <li><strong>🎵 Music:</strong> Youtube Music</li>
+        <li><strong>💸 Budgeting:</strong> Google Sheets</li>
+        <li>
+            <strong>📰 News:</strong> Daily (literal) newsletter by thenews.cc
+        </li>
+    </ul>
+</Page>

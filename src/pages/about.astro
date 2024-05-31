@@ -1,12 +1,37 @@
 ---
-import Page from "../layouts/Page.astro"; 
+import Page from "../layouts/Page.astro";
 
 const seo = {
   title: "About | Lauro",
   description: "",
 };
+
+const birthdate = new Date(1998, 11, 23);
+const ageDifMs = Date.now() - birthdate.getTime();
+const ageDate = new Date(ageDifMs);
+const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 ---
 
 <Page seo={seo}>
-  <p>Future about section!</p>
+  <p>🪪 Lauro Figueiredo</p>
+  <p>🎂 {age} years old</p>
+  <p>👤 He/him</p>
+
+  <p>
+    📍 <a
+      href="https://www.openstreetmap.org/relation/368782#map=13/-19.9358/-43.9040"
+      target="_blank">Belo Horizonte, Brazil</a
+    >
+  </p>
+
+  <p>
+    💻 Software Engineer (currently @<a
+      href="http://www.avenuecode.com"
+      target="_blank">Avenue Code</a
+    >)
+  </p>
+
+  <a href="/interests">Check my interests!</a>
 </Page>
+
+<style></style>

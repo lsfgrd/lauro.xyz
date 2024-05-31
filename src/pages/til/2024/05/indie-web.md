@@ -6,6 +6,7 @@ publishDate: 30/05/2024
 author: "Lauro Figueiredo"
 image: "/assets/til/2024/05/IndieWeb.png"
 alt: Close-up of a sound mixing console with various knobs and sliders. The text overlaid reads, "Control you don't typically find in social media," with the website "indieweb.org" displayed in the bottom right corner.
+notAI: true
 ---
 
 tl;dr - Check <a href="https://indieweb.org/" target="_blank">IndieWeb</a> and join the party :)
@@ -40,9 +41,3 @@ what I want to see - it's a disaster. I'm tired of authwalls, uncrawlable conten
 Other people also seem to be tired of this. Cool! That's more people to start making some difference!
 
 As a follow-up read, I recommend [The indie web](https://jamesg.blog/2024/01/27/the-indie-web/), by James, where he shares his vision about this topic and the community.
-
-.
-.
-.
-
-![Written by a human, not by AI](/assets/notAI.png)

@@ -1,6 +1,4 @@
 ---
-import Layout from "./Base.astro";
-import Container from "../components/Container.astro";
 import ArticleSchema from "../components/ArticleSchema.astro";
 import Page from "./Page.astro";
 import { Image } from "astro:assets";
@@ -18,32 +16,43 @@ const { frontmatter } = Astro.props;
     <br />
     {
       frontmatter.image && (
-        // <img
-        //   width="720"
-        //   height="420"
-        //   class="post-main__img"
-        //   loading="lazy"
-        //   src={frontmatter.image}
-        //   alt={frontmatter.alt}
-        // />
         <Image
           src={frontmatter.image}
           alt={frontmatter.alt}
-          // // width={720}
-          // // height={420}
-          // widths={[300, 600, 900, 1200, 1800, 2400]}
+          width={700}
+          height={350}
           loading="eager"
           class="post-main__img"
         />
       )
     }
     <slot />
+    {
+      frontmatter.notAI && (
+        <>
+          <p>...</p>
+          <a class="not_ai" href="https://notbyai.fyi/" target="_blank">
+            <Image
+              src="/assets/notAI.png"
+              alt="Written by a human, not by AI"
+              width={131}
+              height={42}
+              loading="lazy"
+            />
+          </a>
+        </>
+      )
+    }
   </article>
 </Page>
 
 <style>
-  img {
+  .post-main__img {
     width: 100%;
     height: auto;
+  }
+
+  .not_ai {
+    border-bottom: none;
   }
 </style>

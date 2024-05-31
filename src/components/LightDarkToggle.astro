@@ -1,3 +1,6 @@
+---
+import ColorModeIcon from "../icons/ColorModeIcon.astro";
+---
 <script is:inline slot="head-bottom">
   (function () {
     const currentTheme = localStorage.getItem("theme");
@@ -24,7 +27,7 @@
 </script>
 
 <button id="theme-toggle" aria-label="Toggle light/dark mode">
-  <i class="fa-solid fa-circle-half-stroke"></i>
+  <ColorModeIcon />
 </button>
 
 <style>

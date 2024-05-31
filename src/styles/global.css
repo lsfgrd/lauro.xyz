@@ -9,19 +9,10 @@
   --accent-color: #553071;
 }
 
-
 [data-theme="dark"] {
   --bg-color: #1E1E1E;
   --text-color: #ffffff;
   --accent-color: #CEC8FB;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #1E1E1E;
-    --text-color: #ffffff;
-  }
 }
 
 html,
@@ -30,49 +21,59 @@ body {
   padding: 0;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
-  text-align: justify;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-}
-
-a {
-  color: var(--accent-color);
-  border-bottom: 2px dotted var(--text-color);
-  text-decoration: none;
-}
-
-a:hover {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  /* color: #FFF;
-  background-color: var(--accent-color); */
+  line-height: 1.6;
 }
 
 button {
   cursor: pointer;
 }
 
-a:focus {
-  outline: auto 5px Highlight; /* for non-webkit browsers */
-  outline: auto 5px -webkit-focus-ring-color; /* for webkit browsers */
-}
-
+/* Section jumping effect */
 section {
   transition: background-color 0.3s ease, border 0.3s ease, padding 0.3s ease;
   border: 2px solid transparent;
   scroll-margin-top: 50px;
   padding: 5px;
-  /* Add any other properties you're changing in .section--active */
 }
 
 .section--active {
-  border: 2px solid #555; /* Example of highlighting, adjust as needed */
-  background-color: rgba(85, 85, 85, 0.1); /* Light background highlight */
+  border: 2px solid #555;
+  background-color: rgba(85, 85, 85, 0.1);
 }
 
+/* Utility classes */
 .hidden {
   display: none;
+}
+
+/* Link styles */
+a {
+  color: var(--accent-color);
+  border-bottom: 2px dotted var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 3px solid var(--accent-color);
+}
+
+a[target^="_blank"]::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  margin-left: 4px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+  display: inline-block;
+}
+
+a:focus {
+  outline: auto 5px Highlight;
+  outline: auto 5px -webkit-focus-ring-color;
 }

@@ -1,51 +1,48 @@
 ---
 const tags = [
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'NextJS',
-  'Nest',
-  'Node',
-  'Angular',
-  'C#',
-  '.NET Core',
-  'Java',
-  'Spring Boot',
-  'PostgreSQL',
-  'MongoDB',
-  'SQL Server',
-  'Adobe Experience Manager',
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "NextJS",
+  "Nest",
+  "Node",
+  "Angular",
+  "C#",
+  ".NET Core",
+  "Java",
+  "Spring Boot",
+  "PostgreSQL",
+  "MongoDB",
+  "SQL Server",
+  "Adobe Experience Manager",
 ];
 ---
 
 <section id="technologies" class="technologies-section">
   <h2>Technologies I've Worked With</h2>
-  <p><em>1+ years of experience is considered</em></p>
+  <p>
+    <em>1+ years of experience is considered</em>
+  </p>
   <ul class="tech-list">
-    {tags.map(tag => <li class="tech-item">{tag}</li>)}
+    {tags.map((tag) => (
+      <li class="tech-item">{tag}</li>
+    ))}
   </ul>
 </section>
 
 <style>
-.tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-}
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
 
-.tech-item {
-  margin: 5px;
-  padding: 5px 15px;
-  background: #007bff;
-  color: #ffffff;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
-}
-
-.tech-item:hover {
-  background-color: #0056b3;
-  cursor: pointer;
-}
+  .tech-item {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--cv-rule, currentColor);
+    border-radius: 999px;
+  }
 </style>

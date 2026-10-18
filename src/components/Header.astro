@@ -7,64 +7,112 @@ const menu = [
     url: "/about",
   },
   {
-    title: "defaults",
-    url: "/defaults",
+    title: "blog pessoal (pt)",
+    url: "/me",
   },
   {
-    title: "hire",
-    url: "/hire",
-  },
-  {
-    title: "tech blog",
-    url: "/tech",
-  },
-  {
-    title: "Today I Learned",
+    title: "TIL",
     url: "/til",
   },
+  {
+    title: "work",
+    url: "/work",
+    also: ["/hire"],
+  },
 ];
+
+const path = Astro.url.pathname.replace(/\/$/, "");
+const isCurrent = ({ url, also = [] }: { url: string; also?: string[] }) =>
+  [url, ...also].some((u) => path === u || path.startsWith(`${u}/`));
 ---
 
 <header>
-  <h1><a href="/">lauro figueiredo</a></h1>
+  <div class="header__top">
+    <a href="/" class="header__title">
+      <span aria-hidden="true">~/</span>lauro figueiredo<span
+        class="header__cursor"
+        aria-hidden="true">_</span
+      >
+    </a>
+    <LightDarkToggle />
+  </div>
 
-  <nav>
+  <nav aria-label="Main">
     <ul>
       {
-        menu.map(({ url, title }, index) => (
+        menu.map((item) => (
           <li>
-            <a href={url}>{title}</a>
+            <a
+              href={item.url}
+              class="nav__link"
+              aria-current={isCurrent(item) ? "page" : undefined}
+            >
+              {item.title}
+            </a>
           </li>
         ))
       }
     </ul>
   </nav>
-
-  <LightDarkToggle />
 </header>
 
 <style>
   header {
-    text-align: center;
+    padding: 1.5rem 0 0;
+    margin-bottom: 2rem;
   }
 
-  h1 {
+  .header__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .header__title {
+    font-family: var(--font-ui);
     font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  .header__title span:first-child {
+    color: var(--accent-color);
+  }
+
+
+  nav {
+    margin-top: 1rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--text-color);
   }
 
   nav ul {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    padding: 0;
     flex-wrap: wrap;
-  }
-
-  nav ul li {
+    gap: 0.25rem 1.25rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
   }
 
-  nav ul li a {
+  .nav__link[aria-current="page"] {
+    color: var(--text-color);
+    font-weight: bold;
     text-decoration: none;
+  }
+
+  .nav__link[aria-current="page"]::before {
+    content: "[";
+    color: var(--accent-color);
+  }
+
+  .nav__link[aria-current="page"]::after {
+    content: "]";
+    color: var(--accent-color);
   }
 </style>

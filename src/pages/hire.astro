@@ -3,7 +3,6 @@ import Layout from "../layouts/Base.astro";
 import Container from "../components/Container.astro";
 import TagList from "../components/TagList.astro";
 import Navbar from "../components/Navbar.astro";
-import Page from "../layouts/Page.astro";
 import Footer from "../components/Footer.astro";
 
 const seo = {
@@ -63,94 +62,201 @@ const experience = [
 ];
 ---
 
-<Page seo={seo}>
-  <h1>Lauro Figueiredo</h1>
+<Layout seo={seo}>
+  <Container>
+    <div class="cv">
+      <a href="/work" class="cv__back">
+        &larr; lauro.xyz
+      </a>
 
-  <Navbar />
+      <header class="cv__header">
+        <h1>Lauro Figueiredo</h1>
+        <p class="cv__subtitle">
+          Senior Software Engineer · Belo Horizonte, Brazil
+        </p>
+      </header>
 
-  <section id="about">
-    <p>
-      I'm a Web Developer with a strong focus on JavaScript and its wide range
-      of uses, both in front-end and back-end development. I believe in keeping
-      up with the basics of JavaScript, which helps me quickly adapt to new
-      technologies as they come.
-    </p>
+      <Navbar />
 
-    <p>
-      Accessibility is a key priority in my work. I aim to create web
-      experiences that are accessible to all, underlining the importance of
-      inclusive design.
-    </p>
+      <section id="about">
+        <p>
+          I'm a Web Developer with a strong focus on JavaScript and its wide
+          range of uses, both in front-end and back-end development. I believe
+          in keeping up with the basics of JavaScript, which helps me quickly
+          adapt to new technologies as they come.
+        </p>
 
-    <p>
-      My main goal is always to provide the best user experience, emphasizing
-      code quality and continuous improvement.
-    </p>
-  </section>
+        <p>
+          Accessibility is a key priority in my work. I aim to create web
+          experiences that are accessible to all, underlining the importance of
+          inclusive design.
+        </p>
 
-  <TagList />
+        <p>
+          My main goal is always to provide the best user experience,
+          emphasizing code quality and continuous improvement.
+        </p>
+      </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    {
-      experience.map(({ company, role, period, desc, location }) => {
-        return (
-          <article class="experience--item">
-            <header>
-              <h3>
-                {role} at {company}
-              </h3>
-              <time>{period}</time>
-              <p>{location}</p>
-            </header>
-            <p set:html={desc} />
-          </article>
-        );
-      })
+      <TagList />
+
+      <section id="experience">
+        <h2>Experience</h2>
+        {experience.map(({ company, role, period, desc, location }) => {
+          return (
+            <article class="experience--item">
+              <header>
+                <h3>
+                  {role} at {company}
+                </h3>
+                <time>{period}</time>
+                <p>{location}</p>
+              </header>
+              <p set:html={desc} />
+            </article>
+          );
+        })}
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <article class="experience--item">
+          <header>
+            <h3>PUC Minas</h3>
+            <time>2024 -- Current</time>
+            <p>Postgraduate Diploma in Distributed Software Architecture</p>
+          </header>
+        </article>
+        <article class="experience--item">
+          <header>
+            <h3>Federal University of Minas Gerais</h3>
+            <time>2016 -- 2023</time>
+            <p>BSc. in Social Anthropology and Archaeology</p>
+          </header>
+        </article>
+        <article class="experience--item">
+          <header>
+            <h3>freeCodeCamp</h3>
+            <time>2017 -- 2018</time>
+            <p>Computer Software Engineering Certificate</p>
+          </header>
+        </article>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>laurofgrd(at)gmail.com</p>
+        <p>hire(at)lauro.xyz</p>
+
+        <p>
+          <a href="https://www.linkedin.com/in/laurofgrd/" target="_blank">
+            https://www.linkedin.com/in/laurofgrd/
+          </a>
+        </p>
+      </section>
+
+      <Footer />
+    </div>
+  </Container>
+</Layout>
+
+<style is:global>
+  .cv {
+    --cv-rule: color-mix(in srgb, var(--text-color) 20%, transparent);
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 2rem 0 0;
+  }
+
+  .cv h1,
+  .cv h2,
+  .cv h3,
+  .cv time {
+    font-family: inherit;
+    letter-spacing: normal;
+  }
+
+  .cv h2::before,
+  .cv h3::before {
+    content: none;
+  }
+
+  .cv__back {
+    font-size: 0.9rem;
+  }
+
+  .cv__header {
+    margin: 1.5rem 0 0;
+  }
+
+  .cv__header h1 {
+    margin: 0;
+    font-size: 2.25rem;
+  }
+
+  .cv__subtitle {
+    margin: 0.25rem 0 0;
+    color: var(--muted-color);
+  }
+
+  .cv h2 {
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.25rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--cv-rule);
+  }
+
+  .cv h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .cv .experience--item {
+    margin-bottom: 1.75rem;
+  }
+
+  .cv .experience--item header p {
+    margin: 0;
+    color: var(--muted-color);
+  }
+
+  .cv .experience--item time {
+    font-size: 0.9rem;
+  }
+
+  .cv section {
+    padding: 0;
+    border: 0;
+  }
+
+  .cv .section--active {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 6px;
+    background: none;
+  }
+
+  .cv footer hr {
+    border-top: 1px solid var(--cv-rule);
+  }
+
+  @media print {
+    .cv__back,
+    .cv nav,
+    #backToTopBtn {
+      display: none !important;
     }
-  </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <article class="experience--item">
-      <header>
-        <h3>PUC Minas</h3>
-        <time>2024 -- Current</time>
-        <p>Postgraduate Diploma in Distributed Software Architecture</p>
-      </header>
-    </article>
-    <article class="experience--item">
-      <header>
-        <h3>Federal University of Minas Gerais</h3>
-        <time>2016 -- 2023</time>
-        <p>BSc. in Social Anthropology and Archaeology</p>
-      </header>
-    </article>
-    <article class="experience--item">
-      <header>
-        <h3>freeCodeCamp</h3>
-        <time>2017 -- 2018</time>
-        <p>Computer Software Engineering Certificate</p>
-      </header>
-    </article>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>laurofgrd(at)gmail.com</p>
-    <p>hire(at)lauro.xyz</p>
-
-    <p>
-      <a href="https://www.linkedin.com/in/laurofgrd/" target="_blank"
-        >https://www.linkedin.com/in/laurofgrd/</a
-      >
-    </p>
-  </section>
-
-  <Footer />
-</Page>
-
-<style>
-  .experience--item {
+    .cv {
+      padding: 0;
+    }
   }
 </style>

@@ -6,14 +6,13 @@ import { Image } from "astro:assets";
 const { frontmatter } = Astro.props;
 ---
 
-<Page seo={frontmatter}>
+<Page seo={frontmatter} lang={frontmatter.lang}>
   <Fragment slot="head-bottom">
     <ArticleSchema {...frontmatter} />
   </Fragment>
   <article class="post-content__article">
     <h1>{frontmatter.title}</h1>
     <time>{frontmatter.publishDate}</time>
-    <br />
     {
       frontmatter.image && (
         <Image
@@ -47,12 +46,26 @@ const { frontmatter } = Astro.props;
 </Page>
 
 <style>
+  .post-content__article > h1 {
+    margin-bottom: 0.25rem;
+    font-size: 2rem;
+  }
+
   .post-main__img {
     width: 100%;
     height: auto;
+    margin: 1.5rem 0;
+    border: var(--border-width) solid var(--text-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--accent-color);
   }
 
   .not_ai {
-    border-bottom: none;
+    display: inline-block;
+    text-decoration: none;
   }
+
+  .not_ai::after {
+    content: none !important;
+  }
+
 </style>

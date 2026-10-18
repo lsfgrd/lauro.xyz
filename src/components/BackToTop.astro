@@ -2,42 +2,27 @@
   const backToTopBtn = document.getElementById("backToTopBtn");
 
   if (backToTopBtn) {
-    window.onscroll = function () {
-      if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-      ) {
-        backToTopBtn.style.display = "block";
-      } else {
-        backToTopBtn.style.display = "none";
-      }
-    };
+    window.addEventListener("scroll", () => {
+      backToTopBtn.hidden = document.documentElement.scrollTop <= 400;
+    });
 
-    backToTopBtn.onclick = function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0 });
+    });
   }
 </script>
 
-<button id="backToTopBtn" title="Go to top">Top</button>
+<button id="backToTopBtn" class="btn" title="Go to top" hidden>↑ top</button>
 
 <style>
   #backToTopBtn {
     position: fixed;
     bottom: 20px;
-    right: 30px;
+    right: 20px;
     z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 10px;
-    display: none;
   }
 
-  #backToTopBtn:hover {
-    background-color: #555;
+  #backToTopBtn[hidden] {
+    display: none;
   }
 </style>

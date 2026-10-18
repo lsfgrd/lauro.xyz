@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import PostList from "../../components/PostList.astro";
+import Paginator from "../../components/Paginator.astro";
+import Page from "../../layouts/Page.astro";
+
+type Post = { frontmatter: Record<string, any>; url: string };
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = Object.values(
+    import.meta.glob<Post>("./**/*.md", { eager: true }),
+  ).map(({ frontmatter, url }) => ({
+    url: url,
+    title: frontmatter.title,
+    description: frontmatter.description,
+    publishDate: frontmatter.publishDate,
+    image: frontmatter.image,
+  }));
+  return paginate(posts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const seo = {
+  title: "Blog pessoal",
+  description: "Textos pessoais, quase sempre em português.",
+};
+
+const { page } = Astro.props as InferGetStaticPropsType<typeof getStaticPaths>;
+---
+
+<Page seo={seo} lang="pt-BR">
+  <article class="blog-page-content__article">
+    <PostList posts={page.data} />
+    {page.data.length === 0 && <p>Nenhum post ainda. Volte em breve!</p>}
+  </article>
+  <Paginator page={page} />
+</Page>

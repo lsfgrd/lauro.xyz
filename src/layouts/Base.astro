@@ -5,14 +5,24 @@ import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
 
 export interface Props {
   seo?: BaseHeadProps;
+  lang?: string;
 }
 
-const { seo } = Astro.props;
+const { seo, lang = "en" } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <BaseHead {...seo} />
+    <script is:inline>
+      (function () {
+        let theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {}
+        if (theme) document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <slot name="head-bottom" />
   </head>
   <body>

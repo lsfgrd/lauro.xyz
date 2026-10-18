@@ -6,12 +6,13 @@ import Container from "../components/Container.astro";
 
 export interface Props {
   seo?: BaseHeadProps;
+  lang?: string;
 }
 
-const { seo } = Astro.props as Props;
+const { seo, lang } = Astro.props as Props;
 ---
 
-<Layout seo={seo}>
+<Layout seo={seo} lang={lang}>
   <Container>
     <Header />
     <slot />

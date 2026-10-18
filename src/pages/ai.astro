@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import Page from "../layouts/Page.astro";
+
+const seo = {
+  title: "AI | Lauro",
+  description: "My current stance on AI (and how it's used on this website)",
+};
+---
+
+<Page seo={seo}>
+  <h1>My stance on AI</h1>
+
+  <p>
+    Everything I write and create here is made by me. I don't use AI to write my blog posts.
+    But I feel it's fair for those who are completely against it to disclose that I do use Claude Code for manual development tasks.
+  </p>
+
+  <h2>What's mine</h2>
+  <ul>
+    <li>
+      Every blog post. Ideas, words and edits
+    </li>
+    <li>The photos, lists and everything else you read on these pages.</li>
+    <li>
+      Decisions about what this website says, how it looks and how it feels.
+    </li>
+  </ul>
+
+  <p>Posts carry this badge at the bottom, as a reminder:</p>
+
+  <p>
+    <a class="not-ai" href="https://notbyai.fyi/" target="_blank">
+      <Image
+        src="/assets/notAI.png"
+        alt="Written by a human, not by AI"
+        width={131}
+        height={42}
+        loading="lazy"
+      />
+    </a>
+  </p>
+
+  <h2>Where I do use it</h2>
+  <p>
+    I use development tasks, but only manual work: things like upgrading
+    dependencies, moving between tools and implementing changes I've already
+    decided on.
+  </p>
+
+  <p>
+    The code of this website is{" "}
+    <a href="https://github.com/lsfgrd/lauro.xyz" target="_blank">
+      public on GitHub
+    </a>
+    , if you're curious about how it's built.
+  </p>
+
+  <p>
+    <small>Last updated: 18/10/2026</small>
+  </p>
+</Page>
+
+<style>
+  .not-ai::after {
+    content: none !important;
+  }
+</style>

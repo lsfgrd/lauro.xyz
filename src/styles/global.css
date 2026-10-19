@@ -2,8 +2,8 @@
   --container-width: 700px;
   --container-padding: 1rem;
 
-  --font-body: Verdana, "DejaVu Sans", "Bitstream Vera Sans", Geneva, sans-serif;
-  --font-ui: ui-monospace, "Cascadia Mono", "Courier New", Courier, monospace;
+  --font-body: "Libre Franklin Variable", system-ui, sans-serif;
+  --font-ui: ui-monospace, "Cascadia Mono", monospace;
   --font-code: var(--font-ui);
 
   --border-width: 2px;
@@ -62,7 +62,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 18px;
   line-height: 1.7;
   transition: background-color 0.2s, color 0.2s;
 }

@@ -1,0 +1,50 @@
+---
+import Page from "../layouts/Page.astro";
+
+const seo = {
+  title: "Colophon | Lauro",
+  description: "How this website is built",
+};
+---
+
+<Page seo={seo}>
+  <h1>Colophon</h1>
+
+  <p>This is how my website is made. Updated everytime I remember to.</p>
+
+  <h2>Build</h2>
+  <ul>
+    <li>
+      <strong>Framework:</strong> <a href="https://astro.build" target="_blank">Astro</a>, generating plain static HTML;
+    </li>
+    <li>
+      <strong>Hosting:</strong> <a href="https://www.netlify.com" target="_blank">Netlify</a> on the free tier;
+    </li>
+    <li>
+      <strong>Source:</strong> <a href="https://github.com/lsfgrd/lauro.xyz" target="_blank">public on GitHub</a>.
+    </li>
+  </ul>
+
+  <h2>Design</h2>
+  <ul>
+    <li>
+      <strong>Body font:</strong> <a href="https://fonts.google.com/specimen/Libre+Franklin" target="_blank">Libre Franklin</a> (self-hosted through Fontsource);
+    </li>
+    <li><strong>Interface font:</strong> whatever monospace font your system has;</li>
+    <li>
+      <strong>Social images:</strong> generated with <a href="https://github.com/vercel/satori" target="_blank">Satori</a>.
+    </li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <ul>
+    <li>
+      <strong>Analytics:</strong> <a href="https://www.goatcounter.com" target="_blank">GoatCounter</a>, privacy-focused, open source web analytics.
+      It does not uses cookies and doesn't track you across sites. I just want to know how many people landed here.
+    </li>
+  </ul>
+
+  <hr>
+
+  <p>You also might be interested in my <a href="/ai">stance on AI</a>.</p>
+</Page>

@@ -11,6 +11,7 @@ export interface Props {
 }
 
 const title = Astro.props.title || settings.title;
+const pageTitle = `${title} | lauro.xyz`;
 const description = Astro.props.description || settings.description;
 const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
 const image = new URL(Astro.props.image || '/og/default.png', Astro.site);
@@ -21,8 +22,8 @@ const image = new URL(Astro.props.image || '/og/default.png', Astro.site);
 
 
 <!-- Primary Meta Tags -->
-<title>{title || settings.title}</title>
-<meta name="title" content={title || settings.title} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description || settings.description} />
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml">

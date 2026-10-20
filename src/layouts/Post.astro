@@ -2,7 +2,7 @@
 import ArticleSchema from "../components/ArticleSchema.astro";
 import Page from "./Page.astro";
 import { Image } from "astro:assets";
-import { formatDate } from "../utils/date";
+import { formatDate, toISODate } from "../utils/date";
 
 const { frontmatter } = Astro.props;
 const ogImage = `/og/${Astro.url.pathname.replace(/^\/|\/$/g, "")}.png`;
@@ -14,7 +14,9 @@ const ogImage = `/og/${Astro.url.pathname.replace(/^\/|\/$/g, "")}.png`;
   </Fragment>
   <article class="post-content__article">
     <h1>{frontmatter.title}</h1>
-    <time>{formatDate(frontmatter.publishDate)}</time>
+    <time datetime={toISODate(frontmatter.publishDate)}>
+      {formatDate(frontmatter.publishDate)}
+    </time>
     {
       frontmatter.image && (
         <Image

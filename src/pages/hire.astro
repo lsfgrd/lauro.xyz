@@ -10,22 +10,47 @@ const seo = {
   description: "Dog dad. Web developer. RPG enthusiast.",
 };
 
+const careerStart = new Date(2018, 2, 1);
+const yearsOfExperience = Math.floor(
+  (Date.now() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000),
+);
+
 const experience = [
   {
     company: "Avenue Code",
-    role: "Software Engineer",
+    role: "Senior Software Engineer",
     period: "March/2021 -- Current",
     location: "Belo Horizonte, Brazil (Remote)",
-    desc: `<p>As a Software Engineer consultant, I provide web development services to a rapidly growing retail client in the U.S. My contributions include:</p>
+    desc: `<p>As a consultant at Avenue Code, I have worked in two major client engagements, always focused on high-traffic websites where performance, accessibility, SEO and tracking matter.</p>
 
+<h4>Current client: big tech</h4>
+<p>As a senior front-end specialist, I work on an internal React component library that integrates with Adobe Experience Manager to deliver content for product and marketing pages, some of the most visited on the web. My work includes:</p>
 <ul>
-  <li>Frontend and backend development;</li>
-  <li>Enhancing website accessibility, performance, and SEO;</li>
-  <li>Code quality assurance through rigorous unit testing;</li>
-  <li>Implementing and managing Google Analytics tracking to gather insightful user data and drive website optimization;</li>
-  <li>General system performance and monitoring;</li>
-  <li>Working with Google Cloud Platform for effective application deployment and monitoring;</li>
-  <li>Specializing in CMS integrations for streamlined content management.</li>
+  <li>Turning meticulously crafted designs into meticulously built React components;</li>
+  <li>Maintaining the component library as a whole: dependency updates, security issues, documentation and avoiding breaking changes;</li>
+  <li>Supporting the internal pages framework built on top of NextJS and the AEM integration;</li>
+  <li>Maintaining the Storybook instance used by designers and other teams;</li>
+  <li>Writing comprehensive tests for every component: unit, interaction and visual regression tests.</li>
+</ul>
+
+<h4>Previous client: U.S. retail e-commerce</h4>
+<p>I worked on the main store website, following the user journey from the home page to the product page.</p>
+<ul>
+  <li>Took part in the migration from a legacy Kraken/DustJS codebase to a NextJS monorepo, building page layouts and core functionality from the ground up, with 100% unit test coverage and pixel-perfect implementations of Figma designs;</li>
+  <li>Led two squads technically (4 front-end devs, 3 back-end devs, 2 AEM specialists) to deliver Adobe Experience Manager as the headless CMS, letting marketing publish fully dynamic pages without developers;</li>
+  <li>Later led the migration from AEM to Contentstack as a developer-friendly alternative, building a shared GraphQL library, a NestJS GraphQL API, a custom Contentstack app and a new component library, and migrating 200+ marketing pages with a custom script;</li>
+  <li>Maintained Scala APIs backed by MongoDB, and worked with Oracle ATG Web Commerce;</li>
+  <li>Implemented structured data, Core Web Vitals improvements, accessibility fixes (ADA), and Google Analytics tracking, including the UA to GA4 migration;</li>
+  <li>Set up monitoring and alerts with Sumologic and Grafana, and load tested APIs with Gatling ahead of the holiday season;</li>
+  <li>Helped migrate applications from on-prem to Google Cloud, creating pipelines with GitHub Actions and Jenkins;</li>
+  <li>Worked with Optimizely A/B tests and documented how to run them for the non-technical Marketing Operations team;</li>
+  <li>Took part in change management, incident response and root cause analysis documents.</li>
+</ul>
+
+<h4>Beyond the code</h4>
+<ul>
+  <li>Mentored more than 20 people, from interns to consultants, through Avenue Code's Buddy leadership program;</li>
+  <li>Led technical interviews, both internally and for clients.</li>
 </ul>
 `,
   },
@@ -34,21 +59,15 @@ const experience = [
     role: "Full Stack Engineer",
     period: "May/2019 -- March/2021",
     location: "Belo Horizonte, Brazil",
-    desc: `<p>Working as a Full Stack Web Developer at Banco BMG (a banking company from Brazil), I was involved in the development of both internal and external systems. My contributions were centered around:</p>
+    desc: `<p>Working as an allocated consultant at Banco BMG (a large Brazilian bank), I built internal and client-facing systems with Angular and .NET Core, alongside bank employees and other contractors. My work included:</p>
 <ul>
-  <li>Development using Angular (versions 8 and 10), .NET Core (versions 2.1 and 3.1);</li>
-  <li>Working with SQL Server and Oracle databases, utilizing ORM frameworks like Dapper and EF Core for data access;</li>
-  <li>Implementing unit testing using Karma/Jasmine and XUnit.</li>
-</ul>
-
-<p>My responsibilities included:</p>
-<ul>
-  <li>Enhancing existing system features;</li>
-  <li>Facilitating system integrations;</li>
-  <li>Maintaining systems in production;</li>
-  <li>Technical design of new products;</li>
-  <li>Managing builds and releases on Azure Pipelines;</li>
-  <li>Technical documentation of APIs.</li>
+  <li>Building dozens of modules of a corporate-client back office (Angular 8 to 11) and its .NET Core 2.1 integration layer, working closely with the product owner and the users;</li>
+  <li>Creating a digital onboarding process to replace paper registrations for corporate clients, with dynamic forms stored in MongoDB, digital signing, SMS 2FA and status tracking. It was client-facing and enabled significant cost cuts;</li>
+  <li>Being the sole developer of a middleware API, built with Clean Architecture/DDD and documented with Swagger, that lets every bank system, including the mobile app, send documents for signing through DocuSign. It is still in use;</li>
+  <li>Introducing automated testing (Karma/Jasmine, XUnit) to codebases that had none;</li>
+  <li>Taking part in the migration from SQL Server to Oracle;</li>
+  <li>Integrating with internal systems and data brokers through REST and SOAP, and generating ready-to-sign PDF documents;</li>
+  <li>Managing builds and releases with Azure Pipelines, and documenting APIs and development practices.</li>
 </ul>
 `,
   },
@@ -57,9 +76,20 @@ const experience = [
     role: "Full Stack Developer",
     period: "March/2018 -- May/2019",
     location: "Belo Horizonte, Brazil",
-    desc: [],
+    desc: `<p>My first professional role, at a startup that let people pay car fines, taxes and government fees in installments by credit card. I started as a web designer/developer building WordPress sites, then became a front-end developer and later a full stack developer. My work included:</p>
+<ul>
+  <li>Designing and developing the SEO-focused landing page with Handlebars, Sass (BEM), vanilla JavaScript and Gulp;</li>
+  <li>Building features for the client-facing and back office Angular applications, and becoming the guardian of the Angular codebase;</li>
+  <li>Developing Java 8 (Spring Boot) APIs with PostgreSQL, including one that communicated with physical payment totems and a pinpad;</li>
+  <li>Integrating with REST and SOAP government APIs and the Cielo payments API;</li>
+  <li>Creating a Chart.js dashboard for back office users and a Node.js reporting service;</li>
+  <li>Deploying Docker containers to AWS;</li>
+  <li>Advocating for unit tests on critical business logic, which allowed safe refactoring.</li>
+</ul>
+`,
   },
 ];
+
 ---
 
 <Layout seo={seo}>
@@ -72,7 +102,8 @@ const experience = [
       <header class="cv__header">
         <h1>Lauro Figueiredo</h1>
         <p class="cv__subtitle">
-          Senior Software Engineer · Belo Horizonte, Brazil
+          Senior Software Engineer · {yearsOfExperience}+ years of experience · Belo
+          Horizonte, Brazil
         </p>
       </header>
 
@@ -80,10 +111,18 @@ const experience = [
 
       <section id="about">
         <p>
-          I'm a Web Developer with a strong focus on JavaScript and its wide
-          range of uses, both in front-end and back-end development. I believe
-          in keeping up with the basics of JavaScript, which helps me quickly
-          adapt to new technologies as they come.
+          I'm a self-taught developer who has been building for the web since I
+          was a kid, and professionally for over {yearsOfExperience} years. My
+          background is in JavaScript and TypeScript, across front-end and
+          back-end, and I've shipped to high-traffic sites, banks and
+          e-commerce.
+        </p>
+
+        <p>
+          I'm a Claude Certified Architect and I work with AI every day. I
+          consider it a tool, not a replacement for judgment: years of
+          experience are what let me tell a good result from one that only looks
+          good.
         </p>
 
         <p>
@@ -123,7 +162,7 @@ const experience = [
         <article class="experience--item">
           <header>
             <h3>PUC Minas</h3>
-            <time>2024 -- Current</time>
+            <time>2024 -- 2025</time>
             <p>Postgraduate Diploma in Distributed Software Architecture</p>
           </header>
         </article>
@@ -177,6 +216,7 @@ const experience = [
   .cv h1,
   .cv h2,
   .cv h3,
+  .cv h4,
   .cv time {
     font-family: inherit;
     letter-spacing: normal;
@@ -218,6 +258,15 @@ const experience = [
   .cv h3 {
     margin: 0;
     font-size: 1.05rem;
+  }
+
+  .cv h4 {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 1rem;
+  }
+
+  .cv h4::before {
+    content: none;
   }
 
   .cv .experience--item {

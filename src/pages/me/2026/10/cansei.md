@@ -2,7 +2,7 @@
 layout: ../../../../layouts/Post.astro
 title: Cansei
 description: antes sofria, agora sou fria.
-publishDate: 18/10/2026
+publishDate: 2026-10-18
 lang: pt-BR
 notAI: true
 ---

@@ -22,9 +22,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const seo = {
-  title: "Example Blog",
+  title: "Tech",
   description:
-    "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.",
+    "A collection of blog posts about web development and tech.",
 };
 
 const { page } = Astro.props as InferGetStaticPropsType<typeof getStaticPaths>;

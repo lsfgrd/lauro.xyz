@@ -2,7 +2,7 @@
 layout: ../../../../layouts/Post.astro
 title: IndieWeb
 description: I found my people!
-publishDate: 30/05/2024
+publishDate: 2024-05-30
 author: "Lauro Figueiredo"
 image: "/assets/til/2024/05/IndieWeb.png"
 alt: Close-up of a sound mixing console with various knobs and sliders. The text overlaid reads, "Control you don't typically find in social media," with the website "indieweb.org" displayed in the bottom right corner.

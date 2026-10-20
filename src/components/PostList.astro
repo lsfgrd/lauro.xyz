@@ -1,10 +1,12 @@
 ---
+import { formatDate } from "../utils/date";
+
 export interface Props {
   posts: {
     url: string;
     title: string;
     description?: string;
-    publishDate?: string;
+    publishDate?: Date | string;
   }[];
 }
 
@@ -14,7 +16,7 @@ const { posts } = Astro.props;
 <ul class="postlist">
   {posts.map((post) => (
     <li>
-      <time>{post.publishDate}</time>
+      <time>{post.publishDate && formatDate(post.publishDate)}</time>
       <div>
         <a href={post.url}>{post.title}</a>
         {post.description && <p>{post.description}</p>}

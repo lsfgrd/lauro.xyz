@@ -1,44 +1,40 @@
 ---
 import site from "../data/settings.js";
+import { toISODate } from "../utils/date";
 
 export interface Props {
   title: string;
   description: string;
   permalink: string;
-  publishDate: string;
+  publishDate: Date | string;
   ogImageUrl?: string;
 }
 
-const { title, permalink, publishDate, ogImageUrl, description } = Astro.props;
+const {
+  title,
+  permalink = Astro.url.href,
+  publishDate,
+  ogImageUrl = `/og/${Astro.url.pathname.replace(/^\/|\/$/g, "")}.png`,
+  description,
+} = Astro.props;
 
 const ldData = {
   "@context": "https://schema.org",
   "@type": "Article",
   publisher: {
     "@type": "Organization",
-    name: `${site.name} Blog`,
-    url: `${site.url}/blog/`,
+    name: `${site.name}`,
+    url: `${site.url}`,
   },
   author: {
     "@type": "Person",
     name: `${site.name}`,
-    image: {
-      "@type": "ImageObject",
-      url: `${site.url}/assets/img/favicon.png`,
-      width: 512,
-      height: 512,
-    },
-    url: "https://example.com/about/",
-    sameAs: [
-      `${site.url}`,
-      `${site.facebookURL}`,
-      `${site.twitterURL}`,
-      `${site.instagramURL}`,
-    ],
+    url: `${site.url}/about/`,
+    sameAs: [`${site.url}`, `${site.githubURL}`],
   },
   headline: `${title}`,
   url: `${permalink}`,
-  datePublished: `${publishDate}`,
+  datePublished: toISODate(publishDate),
   image: {
     "@type": "ImageObject",
     url: `${site.url}${ogImageUrl}`,
@@ -48,7 +44,7 @@ const ldData = {
   description: `${description}`,
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `${site.url}/blog/`,
+    "@id": `${permalink}`,
   },
 };
 ---

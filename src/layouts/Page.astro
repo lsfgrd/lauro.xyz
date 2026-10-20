@@ -13,6 +13,7 @@ const { seo, lang } = Astro.props as Props;
 ---
 
 <Layout seo={seo} lang={lang}>
+  <slot name="head-bottom" slot="head-bottom" />
   <Container>
     <Header />
     <slot />

@@ -1,6 +1,6 @@
 {
-  "name": "astro-minimal-starter",
-  "version": "v1.4.0",
+  "name": "lauro.xyz",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "start": "astro dev",

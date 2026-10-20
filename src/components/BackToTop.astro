@@ -2,9 +2,17 @@
   const backToTopBtn = document.getElementById("backToTopBtn");
 
   if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
-      backToTopBtn.hidden = document.documentElement.scrollTop <= 400;
-    });
+    const update = () => {
+      const root = document.documentElement;
+      const max = root.scrollHeight - root.clientHeight;
+      const progress = max > 0 ? Math.min(root.scrollTop / max, 1) : 0;
+      backToTopBtn.style.setProperty("--progress", String(progress));
+      backToTopBtn.hidden = root.scrollTop <= 400;
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
 
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0 });
@@ -12,7 +20,7 @@
   }
 </script>
 
-<button id="backToTopBtn" class="btn" title="Go to top" hidden>↑ top</button>
+<button id="backToTopBtn" title="Go to top" hidden>↑ top</button>
 
 <style>
   #backToTopBtn {
@@ -20,9 +28,48 @@
     bottom: 20px;
     right: 20px;
     z-index: 99;
+    padding: 0.25rem 0.5rem 0.55rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 0;
+    cursor: pointer;
   }
 
   #backToTopBtn[hidden] {
     display: none;
+  }
+
+  /* Reading progress: a muted track with an accent bar growing along it */
+  #backToTopBtn::before,
+  #backToTopBtn::after {
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.25rem;
+    height: 3px;
+  }
+
+  #backToTopBtn::before {
+    right: 0.5rem;
+    background: var(--muted-color);
+    opacity: 0.3;
+  }
+
+  #backToTopBtn::after {
+    width: calc((100% - 1rem) * var(--progress, 0));
+    background: var(--accent-color);
+  }
+
+  #backToTopBtn:hover {
+    color: var(--accent-color);
+  }
+
+  @media print {
+    #backToTopBtn {
+      display: none;
+    }
   }
 </style>

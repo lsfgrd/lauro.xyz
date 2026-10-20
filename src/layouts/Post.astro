@@ -4,9 +4,10 @@ import Page from "./Page.astro";
 import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
+const ogImage = `/og/${Astro.url.pathname.replace(/^\/|\/$/g, "")}.png`;
 ---
 
-<Page seo={frontmatter} lang={frontmatter.lang}>
+<Page seo={{ ...frontmatter, image: ogImage }} lang={frontmatter.lang}>
   <Fragment slot="head-bottom">
     <ArticleSchema {...frontmatter} />
   </Fragment>

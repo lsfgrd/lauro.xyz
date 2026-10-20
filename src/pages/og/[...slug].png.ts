@@ -2,8 +2,13 @@ import type { APIRoute, GetStaticPaths } from "astro";
 import { readFile } from "node:fs/promises";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
+import settings from "../../data/settings.js";
 
 type Post = { frontmatter: Record<string, any>; url: string };
+
+const logo = readFile("public/favicon.svg").then(
+  (svg) => `data:image/svg+xml;base64,${svg.toString("base64")}`,
+);
 
 const fontDir = "node_modules/@fontsource/libre-franklin/files";
 const fonts = Promise.all(
@@ -14,13 +19,22 @@ const fonts = Promise.all(
   })),
 );
 
-export const getStaticPaths = (() =>
-  Object.values(
+export const getStaticPaths = (() => [
+  {
+    params: { slug: "default" },
+    props: { title: settings.name, description: settings.description, logo: true },
+  },
+  ...Object.values(
     import.meta.glob<Post>("/src/pages/**/*.md", { eager: true }),
   ).map(({ frontmatter, url }) => ({
     params: { slug: url.replace(/^\/|\/$/g, "") },
-    props: { title: frontmatter.title, description: frontmatter.description },
-  }))) satisfies GetStaticPaths;
+    props: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      logo: false,
+    },
+  })),
+]) satisfies GetStaticPaths;
 
 const h = (type: string, style: Record<string, any>, children?: any) => ({
   type,
@@ -28,7 +42,7 @@ const h = (type: string, style: Record<string, any>, children?: any) => ({
 });
 
 export const GET: APIRoute = async ({ props }) => {
-  const { title, description } = props;
+  const { title, description, logo: showLogo } = props;
 
   const card = h(
     "div",
@@ -54,6 +68,15 @@ export const GET: APIRoute = async ({ props }) => {
       },
       [
         h("div", { flexDirection: "column" }, [
+          showLogo && {
+            type: "img",
+            props: {
+              src: await logo,
+              width: 128,
+              height: 128,
+              style: { marginBottom: 32 },
+            },
+          },
           h("div", { fontSize: 72, fontWeight: 700, lineHeight: 1.1 }, title),
           description &&
             h(
@@ -61,7 +84,7 @@ export const GET: APIRoute = async ({ props }) => {
               { marginTop: 24, fontSize: 36, color: "#5f5868" },
               description,
             ),
-        ]),
+        ].filter(Boolean)),
         h("div", { fontSize: 32, fontWeight: 700, color: "#553071" }, "lauro.xyz"),
       ].filter(Boolean),
     ),
